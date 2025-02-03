@@ -7,6 +7,7 @@ require("dotenv/config")
 
 const app = express()
 const env = process.env
+const API = env.API_URL
 
 app.use(bodyParser.json())
 app.use(morgan("tiny"))
@@ -15,7 +16,7 @@ app.options("*", cors())
 
 const authRouter = require("./routes/auth")
 
-app.use("/", authRouter)
+app.use(`${API}/`, authRouter)
 
 ///// Routes /////
 // login
@@ -34,7 +35,7 @@ const port = env.PORT
 mongoose
   .connect(env.MONGODB_CONNECTION_STRING)
   .then(() => {
-    console.log("Connected to database")
+    console.log("Connected to Database")
   })
   .catch((error) => {
     console.error(error)

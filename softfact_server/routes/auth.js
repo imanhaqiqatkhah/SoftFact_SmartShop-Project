@@ -2,7 +2,9 @@ const express = require("express")
 
 const router = express.Router()
 
-router.post("/login", (req, res) => {})
+router.post("/login", (req, res) => {
+  return res.status(201).json({ name: "iman", age: 32 })
+})
 
 router.post("/register", (req, res) => {})
 
